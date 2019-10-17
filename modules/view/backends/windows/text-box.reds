@@ -228,13 +228,13 @@ OS-text-box-metrics: func [
 				x: x + hit/width
 				y: y + hit/height
 			]
-			pair/push as-integer x + as float32! 0.5 as-integer y + as float32! 0.99
+			pair/push x y + as float32! 0.99
 		]
 		TBOX_METRICS_INDEX?
 		TBOX_METRICS_CHAR_INDEX? [
 			pos: as red-pair! arg0
-			x: as float32! pos/x
-			y: as float32! pos/y
+			x: pos/x
+			y: pos/y
 			trailing?: 0
 			inside?: 0
 			hit: as DWRITE_HIT_TEST_METRICS :left
@@ -270,7 +270,7 @@ OS-text-box-metrics: func [
 			metrics: as DWRITE_TEXT_METRICS :left
 			hr: dl/GetMetrics this metrics
 			either type = TBOX_METRICS_SIZE [
-				pair/push as-integer metrics/width as-integer metrics/height
+				pair/push metrics/width metrics/height
 			][
 				integer/push metrics/lineCount
 			]
@@ -345,7 +345,7 @@ OS-text-box-layout: func [
 	str: as red-string! values + FACE_OBJ_TEXT
 	size: as red-pair! values + FACE_OBJ_SIZE
 	either TYPE_OF(size) = TYPE_PAIR [
-		w: size/x h: size/y
+		w: as integer! size/x h: as integer! size/y
 	][
 		w: 0 h: 0
 	]
@@ -409,8 +409,8 @@ txt-box-draw-background: func [
 
 	left: 0
 	rc: as D2D_RECT_F :left
-	x: as float32! pos/x
-	y: as float32! pos/y
+	x: pos/x
+	y: pos/y
 	s: GET_BUFFER(styles)
 	p: (as int-ptr! s/offset) + styles/head
 	end: as int-ptr! s/tail

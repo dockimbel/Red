@@ -16,24 +16,26 @@ Red [
 
 	--test-- "pb-1"
 		pb1-p: 1x1
-		--assert equal? pb1-p/x 1
-		--assert equal? pb1-p/y 1
-		--assert equal? first pb1-p 1
-		--assert equal? second pb1-p 1
+		--assert equal? to integer! pb1-p/x 1
+		--assert equal? to integer! pb1-p/y 1
+		--assert equal? to integer! first pb1-p 1
+		--assert equal? to integer! second pb1-p 1
 		--assert equal? pb1-p 1x1
-		--assert equal? pick pb1-p 1 1
-		--assert equal? pick pb1-p 2 1
+		--assert equal? to integer! pick pb1-p 1 1
+		--assert equal? to integer! pick pb1-p 2 1
 		
 	--test-- "pb-2"
 		pb2-p: 0x0
-		--assert equal? pb2-p/x 0
-		--assert equal? pb2-p/y 0
-		--assert equal? first pb2-p 0
-		--assert equal? second pb2-p 0
+		--assert equal? to integer! pb2-p/x 0
+		--assert equal? to integer! pb2-p/y 0
+		--assert equal? to integer! first pb2-p 0
+		--assert equal? to integer! second pb2-p 0
 		--assert equal? pb2-p 0x0
-		--assert equal? pick pb2-p 1 0
-		--assert equal? pick pb2-p 2 0
+		--assert equal? to integer! pick pb2-p 1 0
+		--assert equal? to integer! pick pb2-p 2 0
 		
+;-- too large integer to float32! will lost precise
+comment {
 	--test-- "pb-3"
 		pb3-p: 2147483647x2147483647
 		--assert equal? pb3-p/x 2147483647
@@ -63,7 +65,7 @@ Red [
 		--assert equal? pb5-p 2147483647x-2147483648
 		--assert equal? pick pb5-p 1 2147483647
 		--assert equal? pick pb5-p 2 -2147483648
-		
+}
 	--test-- "pb-6"			--assert equal? 3x4 as-pair 3 4
 	--test-- "pb-7"			--assert equal? 4x5 make pair! [4 5]
 	--test-- "pb-8"			--assert equal? none attempt [as-pair 10]
@@ -173,7 +175,8 @@ Red [
 	--test-- "prem-2"
 		prem2-p: 16x15
 		--assert equal? prem2-p % 2x3 0x0
-		
+
+comment {
 	--test-- "prem-3"
 		prem3-p: 2147483647x2147483647
 		--assert equal? prem3-p % 2 1x1
@@ -181,7 +184,7 @@ Red [
 	--test-- "prem-4"
 		prem4-p: -2147483648x-2147483648
 		--assert equal? prem4-p % -2147483648 0x0
-		
+}
 ===end-group===
 
 ===start-group=== "pair - negate"
@@ -204,6 +207,7 @@ Red [
 		
 ===end-group===
 
+comment {
 ===start-group=== "pair - and"
 	
 	--test-- "pand-1"		--assert equal? 0x0 (1x1 and 0x0)
@@ -243,6 +247,7 @@ Red [
 	--test-- "pxor-5"		--assert equal? 0x3	(7x7 xor 7x4)
 
 ===end-group===
+}
 
 ===start-group=== "pair - reverse"
 

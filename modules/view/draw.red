@@ -1120,8 +1120,8 @@ Red/System [
 					]
 					TYPE_PAIR [											;-- range
 						range: as red-pair! cmd
-						idx: range/x - 1
-						len: range/y
+						idx: (as integer! range/x) - 1
+						len: as integer! range/y
 						if idx + len > max-len [len: max-len - idx]
 					]
 					TYPE_STRING [										;-- font name
