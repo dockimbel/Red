@@ -11,6 +11,7 @@ change-dir %..
 do %system/utils/encap-fs.r
 
 write %build/bin/sources.r set-cache [
+	%red.r
 	%version.r
 	%usage.txt
 	%boot.red
@@ -323,6 +324,7 @@ write %build/bin/sources.r set-cache [
 			%target-class.r
 		]
 		%utils/ [
+			%encap-fs.r
 			%IEEE-754.r
 			%int-to-bin.r
 			%libRedRT.r

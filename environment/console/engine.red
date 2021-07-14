@@ -41,6 +41,9 @@ system/console: context [
 	
 	read-argument: function [/local value][
 		if args: system/script/args [
+			#if config/toolchain? [
+				if system/toolchain/run args [return "Red []"]
+			]
 
 			args: system/options/args
 			--catch: "--catch"
